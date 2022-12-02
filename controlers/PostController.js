@@ -2,9 +2,24 @@ import PostModel from '../models/Post.js'
 
 export const getAll = async (req, res) => {
     try {
-        const allPosts = await PostModel.find()
+        const allPosts = await PostModel.find().exec()
 
         res.json(allPosts)
+    } catch (err) {
+        console.log(err)
+        res.status(404).json({
+            message: "Не удалось найти нужную информацию"
+        })
+    }
+}
+
+export const getTags = async (req, res) => {
+    try {
+        const allPosts = await PostModel.find().limit(5).exec()
+        
+        const tags = allPosts.map( e => e.tags).flat().slice(0, 5)
+
+        res.json(tags)
     } catch (err) {
         console.log(err)
         res.status(404).json({
