@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { UserSchema } from "./User.js";
 
 const PostSchema = new mongoose.Schema({
     title: {
@@ -20,7 +21,7 @@ const PostSchema = new mongoose.Schema({
     },
     user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'Users',
         require: true,
     },
     imageUrl: String,

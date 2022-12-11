@@ -16,7 +16,6 @@ export const getAll = async (req, res) => {
 export const getTags = async (req, res) => {
     try {
         const allPosts = await PostModel.find().limit(5).exec()
-        
         const tags = allPosts.map( e => e.tags).flat().slice(0, 5)
 
         res.json(tags)

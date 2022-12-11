@@ -1,7 +1,7 @@
 import { kStringMaxLength } from "buffer";
 import mongoose from "mongoose";
 
-const UserSchema = new mongoose.Schema({
+export const UserSchema = new mongoose.Schema({
     fullName: {
         type: String,
         require: true,
@@ -22,4 +22,4 @@ const UserSchema = new mongoose.Schema({
     },
 )
 
-export default mongoose.model('User', UserSchema)
+export default mongoose.model('Users', UserSchema)
