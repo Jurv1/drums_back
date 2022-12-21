@@ -10,10 +10,10 @@ import * as PostController from './controlers/PostController.js'
 import checkAuth from './utils/checkAuth.js'
 import handleErr from './utils/handleErr.js'
 
-
-mongoose.connect('mongodb+srv://admin:912129Rjkz@cluster0.gqmcykh.mongodb.net/blog?retryWrites=true&w=majority')
-    .then(() => { console.log("DB OK") })
-    .catch((err) => { console.log('db error', err) })
+mongoose
+  .connect(process.env.MONGODB_URI)
+  .then(() => console.log('DB Ok'))
+  .catch((err) => console.log('Not Ok', err));
 
 const app = express();
 
